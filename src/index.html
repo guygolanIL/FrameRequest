@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib/FrameChannel.js"></script>
+    <script type="text/javascript">
+
+        const channel = FrameChannel('guy', {}, '#theIframe', {
+            timeout: 5000
+        });
+
+    </script>
+</head>
+
+<body>
+    <iframe onload="onIframeLoad()" id='theIframe' src="innerIndex.html"></iframe>
+</body>
+<script type="text/javascript">
+    function onIframeLoad() {
+        channel.request('foo', { guy: 'yoog' })
+        .then(data => {
+            console.log(data)
+        })
+        .catch(reason => console.log(reason));
+    }
+</script>
+
+</html>
