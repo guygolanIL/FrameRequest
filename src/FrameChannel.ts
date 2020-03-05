@@ -105,5 +105,3 @@ export class FrameChannel {
         return this.post(requestName, payload, MessageType.REQUEST);
     }
 }
-console.log('yay');
-window['FrameChannel'] = FrameChannel;
