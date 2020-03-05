@@ -1,6 +1,6 @@
 {
   "name": "frame-channel",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "main": "dist/bundle.js",
   "types": "dist/FrameChannel.d.ts",
