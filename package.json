@@ -1,17 +1,20 @@
 {
   "name": "frame-channel",
-  "version": "1.0.1",
+  "version": "1.0.7",
   "description": "",
-  "main": "FrameChannel.js",
+  "main": "dist/bundle.js",
+  "types": "dist/FrameChannel.d.ts",
   "scripts": {
     "start": "webpack --config webpack.dev.js -w",
     "build": "webpack --config webpack.prod.js"
   },
-  "author": "",
+  "author": "Guy Golan",
+  "files": ["dist/*"],
   "license": "ISC",
   "dependencies": {
     
   },
+  "browser": true,
   "devDependencies": {
     "@types/typescript": "^2.0.0",
     "typescript": "^3.8.3",
