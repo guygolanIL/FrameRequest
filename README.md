@@ -18,7 +18,7 @@ npm i frame-request
 
 In your parent window javascript file simply put:
 
-```
+```javascript
 import {FrameRequest} from 'frame-request';
 
 const channel = new FrameRequest('Some Channel Name', {
@@ -37,7 +37,7 @@ channel
 
 In your iframe's javascript file put:
 
-```
+```javascript
 import { FrameRequest } from "frame-request";
 
 const channel = new FrameRequest('Some Channel Name', {
