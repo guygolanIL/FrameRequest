@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/FrameChannel.ts',
+  entry: './src/FrameRequest.ts',
   mode: 'development',
   module: {
     rules: [
@@ -16,9 +16,9 @@ module.exports = {
     extensions: [ '.tsx', '.ts', '.js' ],
   },
   output: {
-    filename: 'FrameChannel.js',
+    filename: 'FrameRequest.js',
     path: path.resolve(__dirname, 'dist'),
-    library: 'FrameChannel',
+    library: 'FrameRequest',
     libraryTarget: 'umd'
   },
 };

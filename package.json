@@ -1,19 +1,19 @@
 {
-  "name": "frame-channel",
+  "name": "frame-request",
   "version": "1.0.10",
-  "description": "",
-  "main": "dist/FrameChannel.js",
-  "types": "dist/FrameChannel.d.ts",
+  "description": "A simple iframe communication library",
+  "main": "dist/FrameRequest.js",
+  "types": "dist/FrameRequest.d.ts",
   "scripts": {
     "start": "webpack --config webpack.dev.js -w",
     "build": "webpack --config webpack.prod.js"
   },
   "author": "Guy Golan",
-  "files": ["dist/*"],
+  "files": [
+    "dist/*"
+  ],
   "license": "ISC",
-  "dependencies": {
-    
-  },
+  "dependencies": {},
   "browser": true,
   "devDependencies": {
     "@types/typescript": "^2.0.0",
