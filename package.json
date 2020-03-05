@@ -1,6 +1,6 @@
 {
   "name": "frame-channel",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "",
   "main": "dist/FrameChannel.js",
   "types": "dist/FrameChannel.d.ts",
