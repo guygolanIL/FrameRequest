@@ -57,6 +57,7 @@ Guy Golan - [@GuyGolan](https://www.linkedin.com/in/guy-golan-351312a6)
 
 ## Version History
 
+* 1.0.11 added README.md and refactored name to FrameRequest
 * 1.0.10
     * Various bug fixes and optimizations
     * See [commit change](https://github.com/guygolanIL/FrameRequest/commits/master)
