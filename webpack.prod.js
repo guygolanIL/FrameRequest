@@ -18,5 +18,7 @@ module.exports = {
   output: {
     filename: 'FrameChannel.js',
     path: path.resolve(__dirname, 'dist'),
+    library: 'FrameChannel',
+    libraryTarget: 'umd'
   },
 };
