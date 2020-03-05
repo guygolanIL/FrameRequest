@@ -1,8 +1,8 @@
 {
   "name": "frame-channel",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "",
-  "main": "dist/bundle.js",
+  "main": "dist/FrameChannel.js",
   "types": "dist/FrameChannel.d.ts",
   "scripts": {
     "start": "webpack --config webpack.dev.js -w",
