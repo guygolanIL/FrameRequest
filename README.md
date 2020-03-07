@@ -53,6 +53,7 @@ const channel = new FrameRequest("Some Channel Name", {
 Guy Golan - [@GuyGolan](https://www.linkedin.com/in/guy-golan-351312a6)
 
 ## Version History
+-   1.0.13 throwing error if channel name was not provided
 -   1.0.12 fixed README.md
 -   1.0.11 added README.md and refactored name to FrameRequest
 -   1.0.10
