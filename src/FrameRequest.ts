@@ -8,7 +8,6 @@ export enum MessageType {
 }
 
 export class FrameChannel {
-
     private channelName: string;
     private handlers: any;
     private iframeSelector?: string;
@@ -21,6 +20,8 @@ export class FrameChannel {
         iframeSelector?: string,
         options: IOptions = { timeout: 2000 }
     ) {
+        if (!channelName) throw new Error("A channel name is mandatory");
+        
         this.channelName = channelName;
         this.handlers = handlers;
         this.iframeSelector = iframeSelector;
@@ -34,7 +35,11 @@ export class FrameChannel {
         });
     }
 
-    private handleMessage(requestName: string, payload: any, type: MessageType) {
+    private handleMessage(
+        requestName: string,
+        payload: any,
+        type: MessageType
+    ) {
         let target: any;
         if (type === MessageType.REQUEST) {
             target = this.handlers;
@@ -56,11 +61,13 @@ export class FrameChannel {
 
     private postToFrame(requestName: string, payload: any, type: MessageType) {
         let target;
-        let targetDomain: string = '*';
+        let targetDomain: string = "*";
         if (this.iframeSelector) {
             // in parent
-            const iframe: HTMLIFrameElement | null = document.querySelector(this.iframeSelector);
-            if(iframe){
+            const iframe: HTMLIFrameElement | null = document.querySelector(
+                this.iframeSelector
+            );
+            if (iframe) {
                 target = iframe.contentWindow;
                 targetDomain = iframe.src;
             }
@@ -69,17 +76,20 @@ export class FrameChannel {
             target = window.parent;
         }
 
-        if(target){
-            target.postMessage({
-                senderChannel: this.channelName,
-                requestName,
-                payload,
-                type
-            }, targetDomain, undefined);
+        if (target) {
+            target.postMessage(
+                {
+                    senderChannel: this.channelName,
+                    requestName,
+                    payload,
+                    type
+                },
+                targetDomain,
+                undefined
+            );
         } else {
-            throw new Error('Tried to post to a non-existing target');
+            throw new Error("Tried to post to a non-existing target");
         }
-        
     }
 
     private post(requestName: string, payload: any, type: MessageType) {
