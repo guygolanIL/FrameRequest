@@ -8,9 +8,11 @@ export enum MessageType {
 }
 
 export class FrameChannel {
-    private channelName: string;
-    private handlers: any;
-    private iframeSelector?: string;
+    private static DEFAULT_TIMEOUT: number = 2000;
+
+    private readonly channelName: string;
+    private readonly handlers: any;
+    private readonly iframeSelector?: string;  // if iframe selector not provided assuming its the inner iframe
     private options: IOptions;
     private waitingPromises: any = {};
 
@@ -18,17 +20,17 @@ export class FrameChannel {
         channelName: string,
         handlers: any,
         iframeSelector?: string,
-        options: IOptions = { timeout: 2000 }
+        options: IOptions = {timeout: FrameChannel.DEFAULT_TIMEOUT}
     ) {
         if (!channelName) throw new Error("A channel name is mandatory");
-        
+
         this.channelName = channelName;
         this.handlers = handlers;
         this.iframeSelector = iframeSelector;
         this.options = options;
 
-        window.addEventListener("message", ({ data }) => {
-            const { senderChannel, requestName, payload, type } = data;
+        window.addEventListener("message", ({data}) => {
+            const {senderChannel, requestName, payload, type} = data;
             if (senderChannel === channelName) {
                 this.handleMessage(requestName, payload, type);
             }
@@ -53,13 +55,13 @@ export class FrameChannel {
         target[requestName](payload);
     }
 
-    private createReply(requestName: string) {
+    private createReply(requestName: string): (payload: any) => void {
         return (payload: any) => {
             return this.postToFrame(requestName, payload, MessageType.RESPONSE);
         };
     }
 
-    private postToFrame(requestName: string, payload: any, type: MessageType) {
+    private postToFrame(requestName: string, payload: any, type: MessageType): void {
         let target;
         let targetDomain: string = "*";
         if (this.iframeSelector) {
