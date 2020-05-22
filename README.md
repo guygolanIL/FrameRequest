@@ -2,7 +2,7 @@
 
 ## Description
 
-A Typescript/Javascript library for iframe requests/responses
+A Typescript/Javascript library for easily defining a simple Iframe/Parent API
 
 ## Getting Started
 
